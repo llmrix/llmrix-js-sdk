@@ -176,6 +176,13 @@ export class HttpClient {
   }
 
   /**
+   * Convenience helper for `PUT` requests.
+   */
+  async put<T>(path: string, body?: unknown, opts: Omit<RequestOptions, 'method' | 'body'> = {}): Promise<T> {
+    return this.request<T>(path, { ...opts, method: 'PUT', body });
+  }
+
+  /**
    * Convenience helper for `DELETE` requests.
    */
   async delete<T = void>(path: string, opts: Omit<RequestOptions, 'method' | 'body'> = {}): Promise<T> {
